@@ -48,7 +48,7 @@ const LandingPage: React.FC = () => {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: '#fff' }}>
               ProductName
             </Typography>
-            <Button color="inherit" href="#features">Features</Button>
+            <Button color="inherit" component={RouterLink} to="/pdf-bank">Features</Button>
             <Button color="inherit" href="#method">Method</Button>
             <Button color="inherit" href="#customers">Customers</Button>
             <Button color="inherit" href="#pricing">Pricing</Button>
