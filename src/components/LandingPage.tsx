@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box, Container, Typography, Button, Grid, Paper } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import styled from 'styled-components';
+import { parsePDF } from '../utils/pdfParser';
 
 const UploadButton = styled(Button)`
   margin-top: 20px;
@@ -20,10 +21,14 @@ const LandingPage: React.FC = () => {
     }
   };
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     if (file) {
-      // Here you would implement the actual file upload and parsing logic
-      console.log('Uploading file:', file.name);
+      try {
+        const transactions = await parsePDF(file);
+        console.log('Extracted transactions:', JSON.stringify(transactions, null, 2));
+      } catch (error) {
+        console.error('Error parsing PDF:', error);
+      }
     }
   };
 
