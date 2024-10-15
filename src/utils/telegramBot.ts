@@ -3,14 +3,18 @@ const TELEGRAM_CHAT_ID = '5829033738';
 
 export async function sendToTelegramBot(email: string) {
   const message = `New application received from: ${email}`;
-  const url = '/api/sendTelegram'; // This will be our serverless function endpoint
+  const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+  const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 
-  const response = await fetch(url, {
+  const response = await fetch(proxyUrl + url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ message }),
+    body: JSON.stringify({
+      chat_id: TELEGRAM_CHAT_ID,
+      text: message,
+    }),
   });
 
   if (!response.ok) {

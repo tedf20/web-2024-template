@@ -13,7 +13,12 @@ const ApplicationPage: React.FC = () => {
       await sendToTelegramBot(email);
       setSubmitted(true);
     } catch (err) {
-      setError('An error occurred. Please try again.');
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('An error occurred. Please try again.');
+      }
+      console.error('Error:', err);
     }
   };
 
