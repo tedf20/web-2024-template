@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppBar, Toolbar, Button, Typography, Container, Grid, Card, CardContent, Box } from '@mui/material';
 import { styled } from '@mui/system';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Header = styled(AppBar)`
   background-color: #000;
@@ -52,7 +53,14 @@ const LandingPage: React.FC = () => {
             <Button color="inherit" href="#customers">Customers</Button>
             <Button color="inherit" href="#pricing">Pricing</Button>
             <Button color="inherit">Log in</Button>
-            <DarkButton variant="contained">Sign up</DarkButton>
+            <Button
+              component={RouterLink}
+              to="/signup"
+              variant="contained"
+              color="secondary"
+            >
+              Sign up
+            </Button>
           </Toolbar>
         </Container>
       </Header>
