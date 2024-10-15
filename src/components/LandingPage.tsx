@@ -3,14 +3,13 @@ import { AppBar, Toolbar, Button, Typography, Container, Grid, Card, CardContent
 import { styled } from '@mui/system';
 
 const Header = styled(AppBar)`
-  background-color: transparent;
+  background-color: #000;
   box-shadow: none;
-  color: #000;
 `;
 
 const HeroSection = styled(Box)`
-  background-color: #F3F4F6;
-  padding: 100px 0;
+  background-color: #f5f5f5;
+  padding: 120px 0 80px;
 `;
 
 const Section = styled(Box)`
@@ -18,64 +17,76 @@ const Section = styled(Box)`
 `;
 
 const Footer = styled(Box)`
-  background-color: #1F2937;
+  background-color: #000;
   color: #fff;
-  padding: 40px 0;
+  padding: 60px 0;
+`;
+
+const DarkButton = styled(Button)`
+  background-color: #000;
+  color: #fff;
+  &:hover {
+    background-color: #333;
+  }
+`;
+
+const OutlinedButton = styled(Button)`
+  border: 1px solid #000;
+  color: #000;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
 `;
 
 const LandingPage: React.FC = () => {
   return (
     <>
-      <Header position="static">
+      <Header position="fixed">
         <Container>
-          <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Toolbar disableGutters>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: '#fff' }}>
               ProductName
             </Typography>
             <Button color="inherit" href="#features">Features</Button>
-            <Button color="inherit" href="#how-it-works">How it works</Button>
-            <Button color="inherit" href="#testimonials">Testimonials</Button>
-            <Button variant="contained" color="primary">Get Started</Button>
+            <Button color="inherit" href="#method">Method</Button>
+            <Button color="inherit" href="#customers">Customers</Button>
+            <Button color="inherit" href="#pricing">Pricing</Button>
+            <Button color="inherit">Log in</Button>
+            <DarkButton variant="contained">Sign up</DarkButton>
           </Toolbar>
         </Container>
       </Header>
 
       <HeroSection>
-        <Container>
-          <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={6}>
-              <Typography variant="h1" gutterBottom>
-                Your Product Tagline
-              </Typography>
-              <Typography variant="body1" paragraph>
-                A brief description of your product and its main benefit.
-              </Typography>
-              <Button variant="contained" color="primary" size="large">
-                Start Free Trial
-              </Button>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              {/* Replace with your product illustration */}
-              <Box sx={{ bgcolor: '#DDD', height: 300, borderRadius: 2 }} />
-            </Grid>
-          </Grid>
+        <Container maxWidth="md">
+          <Typography variant="h1" align="center" gutterBottom sx={{ fontSize: '4rem', fontWeight: 700 }}>
+            A purpose-built tool for planning and building products
+          </Typography>
+          <Typography variant="h5" align="center" paragraph sx={{ color: '#666', mb: 4 }}>
+            Meet the system for modern software development.
+            Streamline issues, sprints, and product roadmaps.
+          </Typography>
+          <Box display="flex" justifyContent="center" gap={2}>
+            <DarkButton variant="contained" size="large">Start building</DarkButton>
+            <OutlinedButton variant="outlined" size="large">Book a demo</OutlinedButton>
+          </Box>
         </Container>
       </HeroSection>
 
       <Section id="features">
         <Container>
-          <Typography variant="h2" align="center" gutterBottom>
+          <Typography variant="h2" align="center" gutterBottom sx={{ mb: 6 }}>
             Key Features
           </Typography>
           <Grid container spacing={4}>
             {[1, 2, 3].map((item) => (
               <Grid item xs={12} md={4} key={item}>
-                <Card>
+                <Card elevation={0} sx={{ backgroundColor: 'transparent' }}>
                   <CardContent>
                     <Typography variant="h5" gutterBottom>
                       Feature {item}
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography variant="body1">
                       Description of feature {item} and its benefits.
                     </Typography>
                   </CardContent>
@@ -86,10 +97,10 @@ const LandingPage: React.FC = () => {
         </Container>
       </Section>
 
-      <Section id="how-it-works" sx={{ bgcolor: '#F3F4F6' }}>
+      <Section id="method" sx={{ bgcolor: '#f5f5f5' }}>
         <Container>
-          <Typography variant="h2" align="center" gutterBottom>
-            How It Works
+          <Typography variant="h2" align="center" gutterBottom sx={{ mb: 6 }}>
+            Our Method
           </Typography>
           <Grid container spacing={4}>
             {[1, 2, 3].map((step) => (
@@ -97,7 +108,7 @@ const LandingPage: React.FC = () => {
                 <Typography variant="h5" gutterBottom>
                   Step {step}
                 </Typography>
-                <Typography variant="body2">
+                <Typography variant="body1">
                   Description of step {step} in the process.
                 </Typography>
               </Grid>
@@ -106,15 +117,15 @@ const LandingPage: React.FC = () => {
         </Container>
       </Section>
 
-      <Section id="testimonials">
+      <Section id="customers">
         <Container>
-          <Typography variant="h2" align="center" gutterBottom>
-            What Our Clients Say
+          <Typography variant="h2" align="center" gutterBottom sx={{ mb: 6 }}>
+            Trusted by Industry Leaders
           </Typography>
           <Grid container spacing={4}>
             {[1, 2, 3].map((testimonial) => (
               <Grid item xs={12} md={4} key={testimonial}>
-                <Card>
+                <Card elevation={0} sx={{ backgroundColor: 'transparent' }}>
                   <CardContent>
                     <Typography variant="body1" paragraph>
                       "Testimonial quote {testimonial}."
@@ -130,22 +141,25 @@ const LandingPage: React.FC = () => {
         </Container>
       </Section>
 
-      <Section sx={{ bgcolor: '#F3F4F6' }}>
+      <Section id="pricing" sx={{ bgcolor: '#f5f5f5' }}>
         <Container>
-          <Typography variant="h2" align="center" gutterBottom>
-            Who It's For
+          <Typography variant="h2" align="center" gutterBottom sx={{ mb: 6 }}>
+            Pricing Plans
           </Typography>
           <Grid container spacing={4}>
-            {['Audience 1', 'Audience 2', 'Audience 3'].map((audience) => (
-              <Grid item xs={12} md={4} key={audience}>
+            {['Basic', 'Pro', 'Enterprise'].map((plan) => (
+              <Grid item xs={12} md={4} key={plan}>
                 <Card>
                   <CardContent>
                     <Typography variant="h5" gutterBottom>
-                      {audience}
+                      {plan}
                     </Typography>
-                    <Typography variant="body2">
-                      Specific value proposition for {audience}.
+                    <Typography variant="body1">
+                      Features and pricing for {plan} plan.
                     </Typography>
+                    <DarkButton variant="contained" sx={{ mt: 2 }}>
+                      Choose {plan}
+                    </DarkButton>
                   </CardContent>
                 </Card>
               </Grid>
@@ -170,8 +184,9 @@ const LandingPage: React.FC = () => {
                 Product
               </Typography>
               <Typography variant="body2" component="div">
-                <Box component="ul" sx={{ pl: 2 }}>
+                <Box component="ul" sx={{ pl: 2, listStyleType: 'none' }}>
                   <li>Features</li>
+                  <li>Integrations</li>
                   <li>Pricing</li>
                   <li>FAQ</li>
                 </Box>
@@ -182,8 +197,9 @@ const LandingPage: React.FC = () => {
                 Company
               </Typography>
               <Typography variant="body2" component="div">
-                <Box component="ul" sx={{ pl: 2 }}>
+                <Box component="ul" sx={{ pl: 2, listStyleType: 'none' }}>
                   <li>About</li>
+                  <li>Blog</li>
                   <li>Careers</li>
                   <li>Contact</li>
                 </Box>
@@ -191,12 +207,14 @@ const LandingPage: React.FC = () => {
             </Grid>
             <Grid item xs={12} md={2}>
               <Typography variant="h6" gutterBottom>
-                Legal
+                Resources
               </Typography>
               <Typography variant="body2" component="div">
-                <Box component="ul" sx={{ pl: 2 }}>
-                  <li>Privacy</li>
-                  <li>Terms</li>
+                <Box component="ul" sx={{ pl: 2, listStyleType: 'none' }}>
+                  <li>Community</li>
+                  <li>Contact</li>
+                  <li>DPA</li>
+                  <li>Terms of service</li>
                 </Box>
               </Typography>
             </Grid>
