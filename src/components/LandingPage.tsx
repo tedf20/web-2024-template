@@ -55,11 +55,11 @@ const LandingPage: React.FC = () => {
             <Button color="inherit">Log in</Button>
             <Button
               component={RouterLink}
-              to="/signup"
+              to="/submit-application"
               variant="contained"
               color="secondary"
             >
-              Sign up
+              Submit Application
             </Button>
           </Toolbar>
         </Container>
