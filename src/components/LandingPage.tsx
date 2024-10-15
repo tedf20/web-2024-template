@@ -24,8 +24,8 @@ const LandingPage: React.FC = () => {
   const handleUpload = async () => {
     if (file) {
       try {
-        const transactions = await parsePDF(file);
-        console.log('Extracted transactions:', JSON.stringify(transactions, null, 2));
+        const parsedData = await parsePDF(file);
+        console.log('Extracted data:', JSON.stringify(parsedData, null, 2));
       } catch (error) {
         console.error('Error parsing PDF:', error);
       }
@@ -41,16 +41,16 @@ const LandingPage: React.FC = () => {
               BankState
             </Typography>
             <Typography variant="h2" gutterBottom>
-              Effortless PDF Bank Statement Parsing
+              Dynamic PDF Statement Parsing
             </Typography>
             <Typography variant="body1" paragraph>
-              Upload your PDF bank statements and get instant insights into your finances. Our advanced AI-powered system analyzes your transactions, categorizes expenses, and provides detailed reports to help you make informed financial decisions.
+              Upload any PDF statement and our advanced system will dynamically analyze its structure, extracting relevant information and providing you with a structured JSON output.
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
             <Paper elevation={3} style={{ padding: '2rem', textAlign: 'center' }}>
               <Typography variant="h5" gutterBottom>
-                Upload Your Bank Statement
+                Upload Your Statement
               </Typography>
               <FileInput
                 accept=".pdf"
