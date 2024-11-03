@@ -1,4 +1,4 @@
-const API_URL = 'https://sinikov.com/public/api/v1/lumic/other';
+const API_URL = 'https://www.product-pros.com/api/v1/lumic/other';
 
 export async function submitApplication(email: string) {
   const response = await fetch(API_URL, {
