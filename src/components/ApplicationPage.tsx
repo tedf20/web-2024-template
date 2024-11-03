@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Typography, TextField, Button, Box, Snackbar, Alert } from '@mui/material';
-import { sendToTelegramBot } from '../utils/telegramBot';
+import { submitApplication } from '../utils/submitApplication';
 
 const ApplicationPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -10,7 +10,7 @@ const ApplicationPage: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      await sendToTelegramBot(email);
+      await submitApplication(email);
       setSubmitted(true);
     } catch (err) {
       if (err instanceof Error) {
