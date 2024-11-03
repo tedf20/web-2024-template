@@ -20,7 +20,7 @@ sudo mkdir -p /var/www/your-app
 
 # Copy build files to apache directory
 sudo rm -rf /var/www/your-app/*
-sudo cp -r build/* /var/www/your-app/
+sudo cp -r dist/* /var/www/your-app/
 
 # Set proper permissions
 sudo chown -R www-data:www-data /var/www/your-app
